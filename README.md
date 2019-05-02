@@ -1,6 +1,6 @@
-# JavaScript
+# JavaScript Examples
 
-Samples to learn JavaScript.
+Examples to learn JavaScript.
 
 ## Usage
 
