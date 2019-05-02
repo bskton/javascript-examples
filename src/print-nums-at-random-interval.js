@@ -41,6 +41,18 @@ async function printNumbersUsingAsync() {
   }
 }
 
+async function printNumbersRecursiveUsingAsync() {
+  (async function processNextPromise(i) {
+    if (i === 10) {
+      return undefined;
+    }
+    console.log(i);
+
+    return processNextPromise(await wait(i + 1, Math.random() * 1000));
+  })(await wait(0, Math.random() * 1000));
+}
+
 // printNumbers();
-printNumbersRecursive();
+// printNumbersRecursive();
 // printNumbersUsingAsync();
+printNumbersRecursiveUsingAsync();
