@@ -7,6 +7,18 @@
 
 const wait = (i, ms) => new Promise(resolve => setTimeout(() => resolve(i), ms));
 
+// Implementation One (Using for-loop and Promise)
+const printNumbers = () =>  new Promise(resolve => {
+  let pr = Promise.resolve(0);
+  for (let i = 1; i <= 10; i++) {
+    pr = pr.then(val => {
+      console.log(val);
+      return wait(i, Math.random() * 1000);
+    });
+  }
+  resolve(pr);
+});
+
 async function printNumbersUsingAsync() {
   for (let i = 0; i < 10; i++) {
     await wait(i, Math.random() * 1000);
@@ -14,4 +26,5 @@ async function printNumbersUsingAsync() {
   }
 }
 
-printNumbersUsingAsync();
+printNumbers();
+// printNumbersUsingAsync();
