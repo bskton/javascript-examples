@@ -19,6 +19,21 @@ const printNumbers = () =>  new Promise(resolve => {
   resolve(pr);
 });
 
+// Implementation Two (Using recursion and Promise)
+const printNumbersRecursive = () => {
+  return Promise.resolve(0).then(function processNextPromise(i) {
+    if (i === 10) {
+      return undefined;
+    }
+
+    return wait(i, Math.random() * 1000).then(val => {
+      console.log(val);
+      return processNextPromise(i + 1);
+    })
+  });
+};
+
+// Implementation Three (Using async/await)
 async function printNumbersUsingAsync() {
   for (let i = 0; i < 10; i++) {
     await wait(i, Math.random() * 1000);
@@ -26,5 +41,6 @@ async function printNumbersUsingAsync() {
   }
 }
 
-printNumbers();
+// printNumbers();
+printNumbersRecursive();
 // printNumbersUsingAsync();
